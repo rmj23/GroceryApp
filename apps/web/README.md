@@ -13,14 +13,14 @@ This is the **frontend** for the Grocery App, built with **React**, **TypeScript
 
 ## Install dependencies
 
-From this directory:
+From the `apps/web` directory:
 
 ```bash
-cd "/Users/rubenmoralesjr/Desktop/personal/grocery app/apps/web"
+cd apps/web
 npm install
 ```
 
-Run this once to install all required packages.
+Run this once (after cloning the repo) to install all required packages.
 
 ---
 
