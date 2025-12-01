@@ -1,0 +1,15 @@
+{
+  "name": "groceryapp-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev:api": "cd apps/api && dotnet watch",
+    "dev:web": "cd apps/web && npm run dev",
+    "build:api": "cd apps/api && dotnet build",
+    "build:web": "cd apps/web && npm install && npm run build",
+    "generate-contracts": "cd packages/contracts && npm install && npm run generate",
+    "build:all": "npm run build:api && npm run build:web"
+  }
+}
+
+

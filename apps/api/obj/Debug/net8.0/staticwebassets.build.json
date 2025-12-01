@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "1xqOZPf/JrEHJCP+zm0+lzje3VKSh2Oxrrh+vHAzkKQ=",
+  "Source": "GroceryApp.API",
+  "BasePath": "_content/GroceryApp.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
