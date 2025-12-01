@@ -84,3 +84,10 @@ If you decide to use the `packages/contracts` folder for shared API types in the
 you can keep OpenAPI or any other contract tooling there. For now it is optional and
 not required to run the API or web app.
 
+---
+
+## License
+
+This project is licensed under the **MIT License** – see the `LICENSE` file for details.
+
+
