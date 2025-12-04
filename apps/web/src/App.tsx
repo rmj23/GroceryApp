@@ -1,11 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import RecipeList from './Components/RecipeList';
 import RecipeDetail from './Components/RecipeDetail';
 import CreateRecipe from './Components/CreateRecipe';
-import Calendar from './Components/Calendar';
+import CalendarBigCalendar from './Components/CalendarBigCalendar';
 import { Recipe, ScheduledMeal } from './types';
 
 // Initial sample data for our recipes
@@ -33,7 +33,9 @@ const initialRecipes: Recipe[] = [
   }
 ];
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const isCalendarRoute = location.pathname === '/';
   const [recipes, setRecipes] = useState<Recipe[]>(initialRecipes);
   const [scheduledMeals, setScheduledMeals] = useState<ScheduledMeal[]>([]);
 
@@ -60,33 +62,39 @@ function App() {
   };
 
   return (
-    <Router>
-      <div className="app">
-        <Routes>
-          <Route 
-            path="/" 
-            element={
-              <Calendar 
-                recipes={recipes} 
-                scheduledMeals={scheduledMeals} 
-                addScheduledMeal={addScheduledMeal}
-                removeScheduledMeal={removeScheduledMeal}
-              /> 
-            } 
-          />
-          <Route path="/recipes" element={<RecipeList recipes={recipes} />} />
-          <Route path="/recipes/create" element={<CreateRecipe addRecipe={addRecipe} />} />
-          <Route 
-            path="/recipes/:id" 
-            element={
-              <RecipeDetail 
-                recipes={recipes} 
-                addScheduledMeal={addScheduledMeal}
-              /> 
-            } 
-          />
-        </Routes>
+    <div className={`app ${isCalendarRoute ? 'app-calendar-full' : ''}`}>
+      <Routes>
+        <Route 
+          path="/" 
+          element={
+            <CalendarBigCalendar 
+              recipes={recipes} 
+              scheduledMeals={scheduledMeals} 
+              addScheduledMeal={addScheduledMeal}
+              removeScheduledMeal={removeScheduledMeal}
+            /> 
+          } 
+        />
+        <Route path="/recipes" element={<RecipeList recipes={recipes} />} />
+        <Route path="/recipes/create" element={<CreateRecipe addRecipe={addRecipe} />} />
+        <Route 
+          path="/recipes/:id" 
+          element={
+            <RecipeDetail 
+              recipes={recipes} 
+              addScheduledMeal={addScheduledMeal}
+            /> 
+          } 
+        />
+      </Routes>
       </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }
